@@ -2,13 +2,68 @@
 <html>
 <head lang="en">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="main.css"/>
     <meta charset="UTF-8">
     <title>ReddCom</title>
 </head>
 <body>
 <div class="container">
-    <div class="col-lg-offset-4 col-lg-4">
-        <h1 class="text-center">Hello Bootstrap</h1>
+    <div class="col-sm-offset-4 col-sm-4">
+        <h1 class="text-center">ReddCom</h1>
+    </div>
+
+    <div class="col-sm-12 comment" style="display: table">
+        <div style="display: table-cell">
+            <i class="glyphicon glyphicon-chevron-up"></i>
+            <i class="glyphicon glyphicon-chevron-down"></i>
+        </div>
+        <div style="display: table-cell">
+            <a href="#">someName</a> <span class="small">156 Points</span> <span>4 hours ago</span>
+            <div>someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and </div>
+            <a href="#">reply</a>
+            <div class="nested comment">
+                <div style="display: table-cell">
+                    <i class="glyphicon glyphicon-chevron-up"></i>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </div>
+                <div style="display:table-cell">
+                    <a href="#">someName</a> <span class="small">156 Points</span> <span>4 hours ago</span>
+                    <div>someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and </div>
+                    <a href="#">reply</a>
+                    <div class="nested comment">
+                        <a href="#">someName</a> <span class="small">156 Points</span> <span>4 hours ago</span>
+                        <div>someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and </div>
+                        <a href="#">reply</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nested comment">
+                <a href="#">someName</a> <span class="small">156 Points</span> <span>4 hours ago</span>
+                <div>someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and </div>
+                <a href="#">reply</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 comment">
+        <a href="#">someName</a> <span class="small">156 Points</span> <span>4 hours ago</span>
+        <div>someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and </div>
+        <a href="#">reply</a>
+        <div class="nested comment">
+            <a href="#">someName</a> <span class="small">156 Points</span> <span>4 hours ago</span>
+            <div>someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and </div>
+            <a href="#">reply</a>
+            <div class="nested comment">
+                <a href="#">someName</a> <span class="small">156 Points</span> <span>4 hours ago</span>
+                <div>someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and </div>
+                <a href="#">reply</a>
+            </div>
+        </div>
+        <div class="nested comment">
+            <a href="#">someName</a> <span class="small">156 Points</span> <span>4 hours ago</span>
+            <div>someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and someText - and </div>
+            <a href="#">reply</a>
+        </div>
     </div>
 </div>
 </body>
