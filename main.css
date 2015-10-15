@@ -1,7 +1,12 @@
-.nested {
+.comment {
+    padding-left: 5px;
+    display: table
+}
+
+.comment.nested {
     border-left: 1px solid #000000;
 }
 
-.comment {
-    padding-left: 5px;
+.comment .vote, .comment .comment-body {
+    display: table-cell;
 }
