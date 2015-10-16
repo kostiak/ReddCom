@@ -1,14 +1,20 @@
 {
   "name": "reddcom",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
-  "main": "gruntfile.js",
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "grunt-contrib-watch": "^0.6.1"
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "css-loader": "^0.19.0",
+    "file-loader": "^0.8.4",
+    "style-loader": "^0.12.4",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.2"
   }
 }
