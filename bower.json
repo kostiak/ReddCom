@@ -8,6 +8,7 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "react": "~0.14.0",
-    "moment": "~2.10.6"
+    "moment": "~2.10.6",
+    "mcfly": "~0.0.10"
   }
 }
