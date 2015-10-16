@@ -1,6 +1,6 @@
 var CommentStore = require("../Flux.jsx").CommentStore;
 var CommentBox = require("./CommentBox.jsx");
-var React = require("../node_modules/react/react");
+var React = require("../../node_modules/react/react");
 
 function getState() {
   return {
