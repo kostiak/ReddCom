@@ -30,14 +30,23 @@ var CommentBox = React.createClass({
   }
 });
 
-var comment1 = {
-  name: "coolguy",
-  points: 255,
-  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim purus sed scelerisque efficitur. Morbi semper congue erat, in ultricies erat pellentesque vitae. In hac habitasse platea dictumst. Fusce venenatis nec dolor ut vehicula. Vivamus pellentesque, neque sit amet blandit gravida, ipsum libero lobortis risus, at vehicula risus nulla a nisl. Nam at nibh quam. Fusce massa nibh, mollis et rutrum sed, condimentum eget urna. Vestibulum nec semper dui. Fusce in ligula rutrum, tempus purus id, sagittis eros. Cras eu nisi sed massa venenatis mattis. Ut vehicula sapien non diam molestie, at pharetra neque aliquet. Praesent a consequat lacus.",
-  time: new Date().getTime()-1000*60*60
-};
+var CommentBoxContainer = React.createClass({
+  render: function () {
+    return (
+      <div>
+        {this.props.data.map(function (comment) {
+          return (
+            <div className="col-sm-12 comment">
+              <CommentBox comment={comment} />
+            </div>
+          )
+        })}
+      </div>
+    );
+  }
+});
 
-var comment2 = {
+var data = [{
   name: "someNameA",
   points: 156,
   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim purus sed scelerisque efficitu",
@@ -59,9 +68,31 @@ var comment2 = {
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim purus sed scelerisque efficitu",
     time: new Date().getTime()-1000*60*60*1
   }]
-};
+}, {
+  name: "someNameC",
+  points: 25,
+  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim purus sed scelerisque efficitu",
+  time: new Date().getTime()-1000*60*60*3,
+  nested: [{
+    name: "someNameD",
+    points: 205,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim purus sed scelerisque efficitu",
+    time: new Date().getTime()-1000*60*60*2
+  }]
+}, {
+  name: "someNameC",
+  points: 25,
+  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim purus sed scelerisque efficitu",
+  time: new Date().getTime()-1000*60*60*3,
+  nested: [{
+    name: "someNameD",
+    points: 205,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim purus sed scelerisque efficitu",
+    time: new Date().getTime()-1000*60*60*2
+  }]
+}];
 
 ReactDOM.render(
-  <CommentBox comment={comment2} />,
-  document.getElementById("comment2")
+  <CommentBoxContainer data={data} />,
+  document.getElementById("comments")
 );
