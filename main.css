@@ -10,3 +10,7 @@
 .comment .vote, .comment .comment-body {
     display: table-cell;
 }
+
+.points{
+    padding: 0 5px;
+}
