@@ -1,4 +1,6 @@
 var ReplyBox = require("./ReplyBox.jsx");
+var moment = require("../bower_components/moment/moment");
+var React = require("../node_modules/react/react");
 
 var CommentBox = React.createClass({
   getInitialState: function () {

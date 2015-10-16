@@ -1,4 +1,6 @@
 var CommentActions = require("../Flux.jsx").CommentActions;
+var React = require("../node_modules/react/react");
+
 var ReplyBox = React.createClass({
 
   getInitialState: function () {
