@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="main.css"/>
     <script src="//localhost:35729/livereload.js"></script>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <meta charset="UTF-8">
     <title>ReddCom</title>
 </head>
@@ -12,7 +15,7 @@
     <div class="col-sm-offset-4 col-sm-4">
         <h1 class="text-center">ReddCom</h1>
     </div>
-
+    <div id="example"></div>
     <div class="col-sm-12 comment">
         <div class="vote">
             <i class="glyphicon glyphicon-chevron-up"></i>
@@ -101,6 +104,8 @@
             </div>
         </div>
     </div>
+
+    <script type="text/babel" src="comment.js"></script>
 </div>
 </body>
 </html>
