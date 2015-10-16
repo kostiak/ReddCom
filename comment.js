@@ -16,6 +16,7 @@ function submitReply(reply){
 
 function pushReplay(reply, comment){
   if(comment.key === reply.commentId){
+    if(!comment.nested) comment.nested = [];
     comment.nested.push({
       name: reply.user,
       points: reply.points,
@@ -155,7 +156,6 @@ var CommentBoxContainer = React.createClass({
   },
   onChange: function () {
     this.setState(getState());
-    console.log(this.state);
   },
   render: function () {
     return (
