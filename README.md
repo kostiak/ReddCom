@@ -10,11 +10,10 @@ To install the project locally (for developing, testing, etc.), clone it:
 git clone https://github.com/kostiak/ReddCom.git
 ```
 
-And install `bower` and `npm` packages:
+And install `npm` packages:
 
 ```shell
 npm install
-bower install
 ```
 
 ## Build
