@@ -11,6 +11,14 @@
     display: table-cell;
 }
 
-.points{
+.points {
     padding: 0 5px;
+}
+
+.github-mark {
+    width: 16px;
+}
+
+.github-mark:hover {
+    opacity: 0.5;
 }

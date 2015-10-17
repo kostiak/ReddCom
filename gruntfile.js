@@ -66,12 +66,16 @@ module.exports = function(grunt) {
       index: {
         src: "src/index.html",
         dest: "build/index.html"
+      },
+      image: {
+        src: "src/github.png",
+        dest: "build/github.png"
       }
     },
     watch: {
       main: {
         files: ['src/index.html'],
-        tasks: ['copy:index']
+        tasks: ['copy:index', 'copy:image']
       }
     },
     concurrent: {
@@ -90,7 +94,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
 
 
-  grunt.registerTask('build', ['webpack:build', 'copy:index']);
+  grunt.registerTask('build', ['webpack:build', 'copy:index', 'copy:image']);
   grunt.registerTask('dev', ['concurrent:watch']);
 
 };
