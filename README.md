@@ -2,6 +2,8 @@
 
 Reddit-like comment component build using React.js as I'm learning the React eco-system.
 
+##[Demo](http://kostiak.github.io/ReddCom)
+
 ## Install
 
 To install the project locally (for developing, testing, etc.), clone it:
