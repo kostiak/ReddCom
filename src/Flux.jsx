@@ -1,4 +1,4 @@
-var McFly = require("../bower_components/mcfly/dist/McFly");
+var McFly = require("../node_modules/mcfly");
 var _data = require("./data.js");
 var guidGenerator = require("./utils").guidGenerator;
 var Flux = new McFly();

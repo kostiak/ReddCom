@@ -13,7 +13,7 @@ var CommentBoxContainer = React.createClass({
   getInitialState: function () {
     return getState();
   },
-  onChange: function () {
+  storeDidChange: function () {
     this.setState(getState());
   },
   render: function () {

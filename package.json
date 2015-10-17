@@ -1,6 +1,6 @@
 {
   "name": "reddcom",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "",
   "scripts": {
@@ -24,6 +24,9 @@
     "webpack-dev-server": "^1.12.0"
   },
   "dependencies": {
+    "bootstrap": "^3.3.5",
+    "mcfly": "0.0.10",
+    "moment": "^2.10.6",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   }
