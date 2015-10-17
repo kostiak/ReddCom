@@ -52,8 +52,8 @@
 	var React = __webpack_require__(12);
 	var ReactDOM = __webpack_require__(168);
 
-	var ReplyBox = __webpack_require__(169);
-	var CommentBoxContainer = __webpack_require__(190);
+	var ReplyBox = __webpack_require__(191);
+	var CommentBoxContainer = __webpack_require__(169);
 
 	ReactDOM.render(React.createElement(
 	  "div",
@@ -20006,81 +20006,45 @@
 
 	"use strict";
 
-	var CommentActions = __webpack_require__(170).CommentActions;
+	var CommentStore = __webpack_require__(170).CommentStore;
+	var CommentBox = __webpack_require__(190);
 	var React = __webpack_require__(12);
 
-	var ReplyBox = React.createClass({
-	  displayName: "ReplyBox",
+	function getState() {
+	  return {
+	    comments: CommentStore.getComments()
+	  };
+	}
 
+	var CommentBoxContainer = React.createClass({
+	  displayName: "CommentBoxContainer",
+
+	  mixins: [CommentStore.mixin],
 	  getInitialState: function getInitialState() {
-	    return {
-	      user: "",
-	      points: 0,
-	      text: ""
-	    };
+	    return getState();
 	  },
-	  reset: function reset() {
-	    this.setState({
-	      user: "",
-	      points: 0,
-	      text: ""
-	    });
-	  },
-	  userChange: function userChange(event) {
-	    this.setState({ user: event.target.value });
-	  },
-	  pointsChange: function pointsChange(event) {
-	    this.setState({ points: event.target.value });
-	  },
-	  textChange: function textChange(event) {
-	    this.setState({ text: event.target.value });
-	  },
-	  submit: function submit() {
-	    CommentActions.submitReply({
-	      user: this.state.user,
-	      points: this.state.points,
-	      text: this.state.text,
-	      commentId: this.props.commentId
-	    });
-	    this.reset();
-	    if (this.props.toggle) this.props.toggle();
+	  storeDidChange: function storeDidChange() {
+	    this.setState(getState());
 	  },
 	  render: function render() {
-	    var containerClass = "well col-sm-12";
-	    containerClass += this.props.hidden ? " hidden" : "";
-
+	    var commentArray = [];
+	    Object.keys(this.state.comments).forEach((function (key) {
+	      var comment = this.state.comments[key];
+	      commentArray.push(React.createElement(
+	        "div",
+	        { className: "col-sm-12 comment", key: comment.key },
+	        React.createElement(CommentBox, { comment: comment })
+	      ));
+	    }).bind(this));
 	    return React.createElement(
 	      "div",
-	      { className: containerClass },
-	      React.createElement(
-	        "div",
-	        { className: "form-group col-sm-6" },
-	        React.createElement("input", { type: "text", placeholder: "user", className: "form-control", value: this.state.user, onChange: this.userChange })
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "form-group col-sm-6" },
-	        React.createElement("input", { type: "number", placeholder: "123", className: "form-control", value: this.state.points, onChange: this.pointsChange })
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "form-group col-sm-12" },
-	        React.createElement("textarea", { className: "form-control", onChange: this.textChange })
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "form-group col-sm-12" },
-	        React.createElement(
-	          "button",
-	          { type: "button", className: "btn btn-default pull-right", onClick: this.submit },
-	          "Submit"
-	        )
-	      )
+	      null,
+	      commentArray
 	    );
 	  }
 	});
 
-	module.exports = ReplyBox;
+	module.exports = CommentBoxContainer;
 
 /***/ },
 /* 170 */
@@ -22550,53 +22514,7 @@
 
 	"use strict";
 
-	var CommentStore = __webpack_require__(170).CommentStore;
-	var CommentBox = __webpack_require__(191);
-	var React = __webpack_require__(12);
-
-	function getState() {
-	  return {
-	    comments: CommentStore.getComments()
-	  };
-	}
-
-	var CommentBoxContainer = React.createClass({
-	  displayName: "CommentBoxContainer",
-
-	  mixins: [CommentStore.mixin],
-	  getInitialState: function getInitialState() {
-	    return getState();
-	  },
-	  storeDidChange: function storeDidChange() {
-	    this.setState(getState());
-	  },
-	  render: function render() {
-	    var commentArray = [];
-	    Object.keys(this.state.comments).forEach((function (key) {
-	      var comment = this.state.comments[key];
-	      commentArray.push(React.createElement(
-	        "div",
-	        { className: "col-sm-12 comment", key: comment.key },
-	        React.createElement(CommentBox, { comment: comment })
-	      ));
-	    }).bind(this));
-	    return React.createElement(
-	      "div",
-	      null,
-	      commentArray
-	    );
-	  }
-	});
-
-	module.exports = CommentBoxContainer;
-
-/***/ },
-/* 191 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var ReplyBox = __webpack_require__(169);
+	var ReplyBox = __webpack_require__(191);
 	var TimeAgo = __webpack_require__(192);
 	var React = __webpack_require__(12);
 
@@ -22669,6 +22587,88 @@
 	});
 
 	module.exports = CommentBox;
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var CommentActions = __webpack_require__(170).CommentActions;
+	var React = __webpack_require__(12);
+
+	var ReplyBox = React.createClass({
+	  displayName: "ReplyBox",
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      user: "",
+	      points: 0,
+	      text: ""
+	    };
+	  },
+	  reset: function reset() {
+	    this.setState({
+	      user: "",
+	      points: 0,
+	      text: ""
+	    });
+	  },
+	  userChange: function userChange(event) {
+	    this.setState({ user: event.target.value });
+	  },
+	  pointsChange: function pointsChange(event) {
+	    this.setState({ points: event.target.value });
+	  },
+	  textChange: function textChange(event) {
+	    this.setState({ text: event.target.value });
+	  },
+	  submit: function submit() {
+	    CommentActions.submitReply({
+	      user: this.state.user,
+	      points: this.state.points,
+	      text: this.state.text,
+	      commentId: this.props.commentId
+	    });
+	    this.reset();
+	    if (this.props.toggle) this.props.toggle();
+	  },
+	  render: function render() {
+	    var containerClass = "well col-sm-12";
+	    containerClass += this.props.hidden ? " hidden" : "";
+
+	    return React.createElement(
+	      "div",
+	      { className: containerClass },
+	      React.createElement(
+	        "div",
+	        { className: "form-group col-sm-6" },
+	        React.createElement("input", { type: "text", placeholder: "user", className: "form-control", value: this.state.user, onChange: this.userChange })
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "form-group col-sm-6" },
+	        React.createElement("input", { type: "number", placeholder: "123", className: "form-control", value: this.state.points, onChange: this.pointsChange })
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "form-group col-sm-12" },
+	        React.createElement("textarea", { className: "form-control", value: this.state.text, onChange: this.textChange })
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "form-group col-sm-12" },
+	        React.createElement(
+	          "button",
+	          { type: "button", className: "btn btn-default pull-right", onClick: this.submit },
+	          "Submit"
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = ReplyBox;
 
 /***/ },
 /* 192 */
