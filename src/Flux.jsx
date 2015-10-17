@@ -1,10 +1,22 @@
-var McFly = require("../node_modules/mcfly");
-var _data = require("./data.js");
-var guidGenerator = require("./utils").guidGenerator;
+var McFly = require("mcfly");
+var Firebase = require("firebase");
 var Flux = new McFly();
+var guidGenerator = require("./utils.js").guidGenerator;
+
+var _data = [];
+
+var rootRef = new Firebase("https://reddcom.firebaseio.com");
+
+rootRef.on("value", function (snapshot) {
+  console.log("got new snapshot");
+  _data = snapshot.val();
+  CommentStore.emitChange();
+}, function (err) {
+  console.error("Firebase error:", err)
+});
 
 function submitReply(reply){
-  //will be simplified once a backend is implemented
+  //This really needs a proper backend, this is not good enough even for the demo
   _data.forEach(function (comment) {
     pushReplay(reply, comment);
   });
@@ -20,6 +32,7 @@ function pushReplay(reply, comment){
       time: new Date().getTime(),
       key: guidGenerator()
     });
+    rootRef.set(_data);
   } else if(comment.nested) {
     comment.nested.forEach(function (nestComment) {
       pushReplay(reply, nestComment);
@@ -42,10 +55,8 @@ var CommentStore = Flux.createStore({
   }
 }, function (payload) {
   if(payload.actionType === "SUBMIT_REPLY"){
-    console.log("before", _data);
     submitReply(payload.reply);
-    console.log("after", _data);
-    CommentStore.emitChange();
+//    CommentStore.emitChange();
   }
 });
 

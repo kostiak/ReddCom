@@ -1,12 +1,12 @@
 {
   "name": "reddcom",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Konstantin Kaploon <kkaploon@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^5.8.25",
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.5",
+    "firebase": "^2.3.1",
     "mcfly": "0.0.10",
     "moment": "^2.10.6",
     "react": "^0.14.0",

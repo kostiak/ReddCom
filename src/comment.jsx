@@ -1,8 +1,8 @@
 require("../node_modules/bootstrap/dist/css/bootstrap.min.css");
 require("./main.css");
 
-var React = require("../node_modules/react/dist/react");
-var ReactDOM = require("../node_modules/react-dom/dist/react-dom");
+var React = require("react");
+var ReactDOM = require("react-dom");
 
 var CommentBoxContainer = require("./components/CommentBoxContainer.jsx");
 
