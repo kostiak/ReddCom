@@ -1,5 +1,5 @@
 var ReplyBox = require("./ReplyBox.jsx");
-var moment = require("moment");
+var TimeAgo = require("react-timeago");
 var React = require("react");
 
 var CommentBox = React.createClass({
@@ -34,7 +34,7 @@ var CommentBox = React.createClass({
         <div className="comment-body">
           <a href="#">{this.props.comment.name}</a>
           <span className="small points">{this.props.comment.points} Points</span>
-          <span>{moment(this.props.comment.time).fromNow()} </span>
+          <TimeAgo date={this.props.comment.time} />
           <div>{this.props.comment.text}</div>
           <a onClick={this.toggleReply}>reply</a>
           <ReplyBox toggle={this.toggleReply} hidden={!this.state.reply} commentId={this.props.comment.key}/>

@@ -10,6 +10,13 @@ var ReplyBox = React.createClass({
       text: ""
     }
   },
+  reset: function () {
+    this.setState({
+      user: "",
+      points: 0,
+      text: ""
+    })
+  },
   userChange: function (event) {
     this.setState({user: event.target.value});
   },
@@ -26,7 +33,8 @@ var ReplyBox = React.createClass({
       text: this.state.text,
       commentId: this.props.commentId
     });
-    this.props.toggle();
+    this.reset();
+    if(this.props.toggle) this.props.toggle();
   },
   render: function () {
     var containerClass = "well col-sm-12";
@@ -44,7 +52,7 @@ var ReplyBox = React.createClass({
           <textarea className="form-control" onChange={this.textChange}></textarea>
         </div>
         <div className="form-group col-sm-12">
-          <button className="btn btn-default pull-right" onClick={this.submit}>Submit</button>
+          <button type="button" className="btn btn-default pull-right" onClick={this.submit}>Submit</button>
         </div>
       </div>
     );

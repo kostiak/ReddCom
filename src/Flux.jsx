@@ -8,7 +8,6 @@ var _data = [];
 var rootRef = new Firebase("https://reddcom.firebaseio.com");
 
 rootRef.on("value", function (snapshot) {
-  console.log("got new snapshot");
   _data = snapshot.val();
   CommentStore.emitChange();
 }, function (err) {
@@ -17,9 +16,20 @@ rootRef.on("value", function (snapshot) {
 
 function submitReply(reply){
   //This really needs a proper backend, this is not good enough even for the demo
-  _data.forEach(function (comment) {
-    pushReplay(reply, comment);
-  });
+  if(reply.commentId) {
+    _data.forEach(function (comment) {
+      pushReplay(reply, comment);
+    });
+  } else {
+    _data.push({
+      name: reply.user,
+      points: reply.points,
+      text: reply.text,
+      time: Date.now(),
+      key: guidGenerator()
+    });
+    rootRef.set(_data);
+  }
 }
 
 function pushReplay(reply, comment){
@@ -29,7 +39,7 @@ function pushReplay(reply, comment){
       name: reply.user,
       points: reply.points,
       text: reply.text,
-      time: new Date().getTime(),
+      time: Date.now(),
       key: guidGenerator()
     });
     rootRef.set(_data);
@@ -56,7 +66,6 @@ var CommentStore = Flux.createStore({
 }, function (payload) {
   if(payload.actionType === "SUBMIT_REPLY"){
     submitReply(payload.reply);
-//    CommentStore.emitChange();
   }
 });
 
