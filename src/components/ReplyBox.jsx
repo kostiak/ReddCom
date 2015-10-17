@@ -49,7 +49,7 @@ var ReplyBox = React.createClass({
           <input type="number" placeholder="123" className="form-control" value={this.state.points} onChange={this.pointsChange}/>
         </div>
         <div className="form-group col-sm-12">
-          <textarea className="form-control" onChange={this.textChange}></textarea>
+          <textarea className="form-control" value={this.state.text} onChange={this.textChange}></textarea>
         </div>
         <div className="form-group col-sm-12">
           <button type="button" className="btn btn-default pull-right" onClick={this.submit}>Submit</button>
